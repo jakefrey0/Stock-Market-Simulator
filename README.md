@@ -1,7 +1,7 @@
 # Stock Trading Simulator
  Practice gambling.
  <br />  
-StockMarketWrapper class library usage:
+# StockMarketWrapper class library usage:
 
 Task: Get and display information on a market.
 -------------------------------------------------------------------------------------------------------------
