@@ -9,9 +9,14 @@
 using System;
 using System.Collections.Generic;
 
-namespace StockMarketSim {
+namespace StockMarketWrapper {
 	
 	public class MarketWatcher {
+		
+		/// <summary>
+		/// Called whenever the MarketWatcher updates
+		/// </summary>
+		public event MarketUpdateEventHandler onMarketUpdate;
 		
 		/// <summary>
 		/// Initialize a market watcher that can watch and update multiple markets
@@ -23,8 +28,6 @@ namespace StockMarketSim {
 			
 			
 		}
-		
-		
 		
 	}
 	
