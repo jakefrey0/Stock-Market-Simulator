@@ -1,0 +1,1 @@
+C:\Users\Elite\Documents\SharpDevelop Projects\StockMarketSim\StockMarketSim\obj\Debug\StockMarketSim.csprojResolveAssemblyReference.cache

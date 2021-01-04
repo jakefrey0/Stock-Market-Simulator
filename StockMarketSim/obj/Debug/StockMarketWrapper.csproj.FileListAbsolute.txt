@@ -1,0 +1,5 @@
+C:\Users\Elite\Documents\SharpDevelop Projects\StockMarketSim\StockMarketSim\bin\Debug\StockMarketWrapper.dll
+C:\Users\Elite\Documents\SharpDevelop Projects\StockMarketSim\StockMarketSim\bin\Debug\StockMarketWrapper.pdb
+C:\Users\Elite\Documents\SharpDevelop Projects\StockMarketSim\StockMarketSim\obj\Debug\StockMarketWrapper.csprojResolveAssemblyReference.cache
+C:\Users\Elite\Documents\SharpDevelop Projects\StockMarketSim\StockMarketSim\obj\Debug\StockMarketWrapper.dll
+C:\Users\Elite\Documents\SharpDevelop Projects\StockMarketSim\StockMarketSim\obj\Debug\StockMarketWrapper.pdb

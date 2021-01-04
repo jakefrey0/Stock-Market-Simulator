@@ -1,0 +1,24 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+# SharpDevelop 4.4
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StockMarketWrapper", "StockMarketSim\StockMarketWrapper.csproj", "{160CE9E8-C610-42EC-92EF-E2DC948DF3EB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StockMarketSimulator", "StockMarketSimulator\StockMarketSimulator.csproj", "{8630CE9D-9652-4790-9BDF-ED09AFD66A90}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{160CE9E8-C610-42EC-92EF-E2DC948DF3EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{160CE9E8-C610-42EC-92EF-E2DC948DF3EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{160CE9E8-C610-42EC-92EF-E2DC948DF3EB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{160CE9E8-C610-42EC-92EF-E2DC948DF3EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8630CE9D-9652-4790-9BDF-ED09AFD66A90}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8630CE9D-9652-4790-9BDF-ED09AFD66A90}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8630CE9D-9652-4790-9BDF-ED09AFD66A90}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8630CE9D-9652-4790-9BDF-ED09AFD66A90}.Release|Any CPU.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+EndGlobal
