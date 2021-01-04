@@ -6,7 +6,7 @@ StockMarketWrapper class library usage:
 Namespace: StockMarketWrapper, Class: Market, File: Market.cs, Task: Get and display information on a market.
 -------------------------------------------------------------------------------------------------------------
  
-```
+```C#
 Console.Write("Market: ");
 			
 Thread thr=new Thread(()=> {
