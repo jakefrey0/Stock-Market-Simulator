@@ -7,6 +7,9 @@ Namespace: StockMarketWrapper, Class: Market, File: Market.cs, Task: Get and dis
 -------------------------------------------------------------------------------------------------------------
  
 ```C#
+
+using StockMarketWrapper;
+
 Console.Write("Market: ");
 			
 Thread thr=new Thread(()=> {
