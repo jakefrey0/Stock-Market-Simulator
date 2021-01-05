@@ -38,6 +38,7 @@ namespace StockMarketSimulator
 		{
 			this.marketTabs = new System.Windows.Forms.TabControl();
 			this.portfolioPanel = new System.Windows.Forms.Panel();
+			this.lockAddingCashBtn = new System.Windows.Forms.Button();
 			this.toggleWatchingBtn = new System.Windows.Forms.Button();
 			this.addMarketTextBox = new System.Windows.Forms.TextBox();
 			this.addMarketBtn = new System.Windows.Forms.Button();
@@ -58,6 +59,7 @@ namespace StockMarketSimulator
 			// 
 			// portfolioPanel
 			// 
+			this.portfolioPanel.Controls.Add(this.lockAddingCashBtn);
 			this.portfolioPanel.Controls.Add(this.toggleWatchingBtn);
 			this.portfolioPanel.Controls.Add(this.addMarketTextBox);
 			this.portfolioPanel.Controls.Add(this.addMarketBtn);
@@ -70,13 +72,23 @@ namespace StockMarketSimulator
 			this.portfolioPanel.Size = new System.Drawing.Size(229, 505);
 			this.portfolioPanel.TabIndex = 1;
 			// 
+			// lockAddingCashBtn
+			// 
+			this.lockAddingCashBtn.Location = new System.Drawing.Point(117, 42);
+			this.lockAddingCashBtn.Name = "lockAddingCashBtn";
+			this.lockAddingCashBtn.Size = new System.Drawing.Size(109, 33);
+			this.lockAddingCashBtn.TabIndex = 7;
+			this.lockAddingCashBtn.Text = "Lock adding cash";
+			this.lockAddingCashBtn.UseVisualStyleBackColor = true;
+			this.lockAddingCashBtn.Click += new System.EventHandler(this.LockAddingCashBtnClick);
+			// 
 			// toggleWatchingBtn
 			// 
 			this.toggleWatchingBtn.Location = new System.Drawing.Point(117, 3);
 			this.toggleWatchingBtn.Name = "toggleWatchingBtn";
 			this.toggleWatchingBtn.Size = new System.Drawing.Size(109, 33);
 			this.toggleWatchingBtn.TabIndex = 6;
-			this.toggleWatchingBtn.Text = "Stop Watching";
+			this.toggleWatchingBtn.Text = "Stop watching";
 			this.toggleWatchingBtn.UseVisualStyleBackColor = true;
 			this.toggleWatchingBtn.Click += new System.EventHandler(this.ToggleWatchingBtnClick);
 			// 
@@ -140,11 +152,13 @@ namespace StockMarketSimulator
 			this.Controls.Add(this.marketTabs);
 			this.Name = "MainForm";
 			this.Text = "StockMarketSimulator";
+			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainFormFormClosing);
 			this.Load += new System.EventHandler(this.MainFormLoad);
 			this.portfolioPanel.ResumeLayout(false);
 			this.portfolioPanel.PerformLayout();
 			this.ResumeLayout(false);
 		}
+		private System.Windows.Forms.Button lockAddingCashBtn;
 		private System.Windows.Forms.Button toggleWatchingBtn;
 		private System.Windows.Forms.Button addCashBtn;
 		private System.Windows.Forms.Label yourCashLabel;

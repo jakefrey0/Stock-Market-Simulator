@@ -23,7 +23,7 @@ namespace StockMarketSimulator {
 		private Int32 cash=0;
 		private MarketWatcher mw;
 		private Byte markets=0;
-		private Boolean changedDelay,watchingMarket;
+		private Boolean changedDelay,watchingMarket,triedLockingCash;
 		
 		public MainForm () {
 			
@@ -39,6 +39,8 @@ namespace StockMarketSimulator {
 			this.markets=3;
 			this.changedDelay=false;
 			this.watchingMarket=true;
+			this.triedLockingCash=false;
+			this.mw.onMarketUpdate+=this.gotMarketUpdate;
 			
 		}
 		
@@ -92,10 +94,12 @@ namespace StockMarketSimulator {
 		private void addMarketTabPage (String market) {
 			
 			TabPage tp=new TabPage(){Name=market,Text=market};
-			tp.Controls.Add(new Label(){Name=market+"_PriceLbl",Text="Price: (Waiting for update..)",Font=new Font("Verdana",12F),Size=new Size(200,16),Location=new Point(2,2)});
+			tp.Controls.Add(new Label(){Name=market+"_PriceLbl",Text="Price: (Waiting for update..)",Font=new Font("Verdana",12F),Size=new Size(this.marketTabs.Size.Width-4,20),Location=new Point(2,2)});
+			tp.Controls.Add(new Label(){Name=market+"_DifferenceLbl",Text="Difference: (Waiting for update..)",Font=new Font("Verdana",12F),Size=new Size(this.marketTabs.Size.Width-4,20),Location=new Point(2,24)});
+			tp.Controls.Add(new Label(){Name=market+"_UpdateTimeLbl",Text="Last update time: (Waiting for update..)",Font=new Font("Verdana",12F),Size=new Size(this.marketTabs.Size.Width-4,20),Location=new Point(2,46)});
 			
 			
-			this.marketTabs.TabPages.Add(new TabPage(){Name=market,Text=market});
+			this.marketTabs.TabPages.Add(tp);
 			
 		}
 		
@@ -106,27 +110,84 @@ namespace StockMarketSimulator {
 			this.addMarketTabPage("BBY");
 			this.mw.startWatching();
 			
+			this.marketTabs.Anchor=AnchorStyles.Left|AnchorStyles.Top|AnchorStyles.Bottom;
+			this.portfolioPanel.Anchor=AnchorStyles.Right|AnchorStyles.Top|AnchorStyles.Bottom;
+			this.yourCashLabel.Anchor=AnchorStyles.Right|AnchorStyles.Bottom;
+			this.addCashTextBox.Anchor=AnchorStyles.Right|AnchorStyles.Bottom;
+			this.addMarketTextBox.Anchor=AnchorStyles.Right|AnchorStyles.Bottom;
+			this.addMarketBtn.Anchor=AnchorStyles.Right|AnchorStyles.Bottom;
+			this.addCashBtn.Anchor=AnchorStyles.Right|AnchorStyles.Bottom;
+			
 		}
 		
 		private void AddMarketBtnClick (Object sender, EventArgs e) { this.addMarket(this.addMarketTextBox.Text); }
 		
-		private void ToggleWatchingBtnClick(Object sender, EventArgs e) {
+		private void ToggleWatchingBtnClick (Object sender, EventArgs e) {
 			
 			if (this.watchingMarket) {
 				
-				
+				this.mw.stopWatching();
+				this.toggleWatchingBtn.Text="Start watching";
 				
 			}
 			
 			else {
 				
-				
+				this.mw.startWatching();
+				this.toggleWatchingBtn.Text="Stop watching";
 				
 			}
 			
 			this.watchingMarket=!this.watchingMarket;
 			
 		}
+		
+		private void gotMarketUpdate (MarketWatcher sender,MarketUpdateEventArgs args) {
+			
+			foreach (MarketSummary sum in args.info) {
+				
+				foreach (TabPage tp in this.marketTabs.TabPages) {
+					
+					if (tp.Name==sum.market) {
+						
+						foreach (Control c in tp.Controls) {
+							
+							if (c.Name==(sum.market+"_PriceLbl"))
+								c.Invoke(new Action(()=>{c.Text="Price: "+sum.value.ToString();}));
+							else if (c.Name==(sum.market+"_DifferenceLbl"))
+								c.Invoke(new Action(()=>{c.Text="Difference: "+((sum.difference>0)?"+"+sum.difference.ToString()+" (↑)":sum.difference.ToString()+" (↓)");}));
+							else if (c.Name==(sum.market+"_UpdateTimeLbl"))
+								c.Invoke(new Action(()=>{c.Text="Last update time: "+args.time.ToString();}));
+							
+						}
+						
+						break;
+						
+					}
+					
+				}
+				
+			}
+			
+		}
+		
+		private void LockAddingCashBtnClick (Object sender, EventArgs e) {
+			
+			if (!(this.triedLockingCash)) {
+				
+				MessageBox.Show("Attention: If you click the \"Lock adding cash\" button again, you will lose the opportunity to add cash until you restart the application!!");
+				this.triedLockingCash=true;
+				return;
+				
+			}
+			
+			this.portfolioPanel.Controls.Remove(this.lockAddingCashBtn);
+			this.portfolioPanel.Controls.Remove(this.addCashTextBox);
+			this.portfolioPanel.Controls.Remove(this.addCashBtn);
+			
+		}
+		
+		private void MainFormFormClosing (Object sender, FormClosingEventArgs e) { Environment.Exit(0); }
 		
 	}
 	

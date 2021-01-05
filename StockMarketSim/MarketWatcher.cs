@@ -8,8 +8,8 @@
  */
 using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using System.Threading;
+using System.Windows.Forms;
 
 namespace StockMarketWrapper {
 	
@@ -56,7 +56,9 @@ namespace StockMarketWrapper {
 		public void startWatching () {
 			
 			this.stopWatchingRequested=false;
-			Task.Factory.StartNew(this.watch);
+			Thread t=new Thread(watch);
+			t.SetApartmentState(ApartmentState.STA);
+			t.Start();
 			
 		}
 		
