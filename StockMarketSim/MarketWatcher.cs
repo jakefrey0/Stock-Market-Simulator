@@ -75,11 +75,13 @@ namespace StockMarketWrapper {
 			
 			DateTime start;
 			List<MarketSummary> summaries;
+			List<String> marketsToCheck;
 			
 			reWatch:
 			
 			start=DateTime.UtcNow;
 			summaries=new List<MarketSummary>(this.markets.Count);
+			marketsToCheck=new List<String>(this.markets);
 			
 			if (this.stopWatchingRequested) {
 				
@@ -88,7 +90,7 @@ namespace StockMarketWrapper {
 				
 			}
 			
-			foreach (String s in this.markets) {
+			foreach (String s in marketsToCheck) {
 				
 				try { summaries.Add(Market.getMarketSummary(s)); }
 				catch (InvalidMarketException) { this.markets.RemoveAll(x=>x==s); }

@@ -38,6 +38,7 @@ namespace StockMarketSimulator
 		{
 			this.marketTabs = new System.Windows.Forms.TabControl();
 			this.portfolioPanel = new System.Windows.Forms.Panel();
+			this.cashAddedLbl = new System.Windows.Forms.Label();
 			this.lockAddingCashBtn = new System.Windows.Forms.Button();
 			this.toggleWatchingBtn = new System.Windows.Forms.Button();
 			this.addMarketTextBox = new System.Windows.Forms.TextBox();
@@ -46,6 +47,9 @@ namespace StockMarketSimulator
 			this.yourCashLabel = new System.Windows.Forms.Label();
 			this.addCashBtn = new System.Windows.Forms.Button();
 			this.portfolioTitleLabel = new System.Windows.Forms.Label();
+			this.statsLbl = new System.Windows.Forms.Label();
+			this.stocksPurchasedLbl = new System.Windows.Forms.Label();
+			this.profitLbl = new System.Windows.Forms.Label();
 			this.portfolioPanel.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -59,6 +63,10 @@ namespace StockMarketSimulator
 			// 
 			// portfolioPanel
 			// 
+			this.portfolioPanel.Controls.Add(this.profitLbl);
+			this.portfolioPanel.Controls.Add(this.stocksPurchasedLbl);
+			this.portfolioPanel.Controls.Add(this.statsLbl);
+			this.portfolioPanel.Controls.Add(this.cashAddedLbl);
 			this.portfolioPanel.Controls.Add(this.lockAddingCashBtn);
 			this.portfolioPanel.Controls.Add(this.toggleWatchingBtn);
 			this.portfolioPanel.Controls.Add(this.addMarketTextBox);
@@ -71,6 +79,14 @@ namespace StockMarketSimulator
 			this.portfolioPanel.Name = "portfolioPanel";
 			this.portfolioPanel.Size = new System.Drawing.Size(229, 505);
 			this.portfolioPanel.TabIndex = 1;
+			// 
+			// cashAddedLbl
+			// 
+			this.cashAddedLbl.Location = new System.Drawing.Point(3, 89);
+			this.cashAddedLbl.Name = "cashAddedLbl";
+			this.cashAddedLbl.Size = new System.Drawing.Size(223, 15);
+			this.cashAddedLbl.TabIndex = 8;
+			this.cashAddedLbl.Text = "Cash added: 0";
 			// 
 			// lockAddingCashBtn
 			// 
@@ -143,6 +159,30 @@ namespace StockMarketSimulator
 			this.portfolioTitleLabel.TabIndex = 0;
 			this.portfolioTitleLabel.Text = "Portfolio";
 			// 
+			// statsLbl
+			// 
+			this.statsLbl.Location = new System.Drawing.Point(3, 76);
+			this.statsLbl.Name = "statsLbl";
+			this.statsLbl.Size = new System.Drawing.Size(223, 13);
+			this.statsLbl.TabIndex = 9;
+			this.statsLbl.Text = "Stats";
+			// 
+			// stocksPurchasedLbl
+			// 
+			this.stocksPurchasedLbl.Location = new System.Drawing.Point(3, 104);
+			this.stocksPurchasedLbl.Name = "stocksPurchasedLbl";
+			this.stocksPurchasedLbl.Size = new System.Drawing.Size(223, 15);
+			this.stocksPurchasedLbl.TabIndex = 10;
+			this.stocksPurchasedLbl.Text = "Stocks purchased: 0";
+			// 
+			// profitLbl
+			// 
+			this.profitLbl.Location = new System.Drawing.Point(3, 119);
+			this.profitLbl.Name = "profitLbl";
+			this.profitLbl.Size = new System.Drawing.Size(223, 15);
+			this.profitLbl.TabIndex = 11;
+			this.profitLbl.Text = "Profit: 0";
+			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -158,6 +198,10 @@ namespace StockMarketSimulator
 			this.portfolioPanel.PerformLayout();
 			this.ResumeLayout(false);
 		}
+		private System.Windows.Forms.Label profitLbl;
+		private System.Windows.Forms.Label statsLbl;
+		private System.Windows.Forms.Label stocksPurchasedLbl;
+		private System.Windows.Forms.Label cashAddedLbl;
 		private System.Windows.Forms.Button lockAddingCashBtn;
 		private System.Windows.Forms.Button toggleWatchingBtn;
 		private System.Windows.Forms.Button addCashBtn;
