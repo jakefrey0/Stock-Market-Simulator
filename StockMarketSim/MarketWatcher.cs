@@ -100,7 +100,7 @@ namespace StockMarketWrapper {
 				this.onMarketUpdate.Invoke(this,new MarketUpdateEventArgs(summaries.ToArray(),DateTime.Now));
 			
 			retry:
-			TimeSpan ts=start-DateTime.UtcNow;
+			TimeSpan ts=DateTime.UtcNow-start;
 			if (ts.TotalMilliseconds<this.updateDelay) {
 				
 				Thread.Sleep(1500);
