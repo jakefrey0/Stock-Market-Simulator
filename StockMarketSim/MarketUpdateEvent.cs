@@ -20,14 +20,14 @@ namespace StockMarketWrapper {
 		/// <summary>
 		/// The new information about the market
 		/// </summary>
-		public readonly MarketSummary info;
+		public readonly MarketSummary[] info;
 		
 		/// <summary>
 		/// The time of the update
 		/// </summary>
 		public readonly DateTime time;
 		
-		public MarketUpdateEventArgs (MarketSummary info,DateTime time) : base () { this.info=info; this.time=time; }
+		public MarketUpdateEventArgs (MarketSummary[] info,DateTime time) : base () { this.info=info; this.time=time; }
 		
 	}
 	

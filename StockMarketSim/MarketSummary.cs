@@ -23,12 +23,18 @@ namespace StockMarketWrapper {
 		public readonly Single value;
 		
 		/// <summary>
+		/// The name of the market
+		/// </summary>
+		public readonly String market;
+		
+		/// <summary>
 		/// Initialize a market summary.
 		/// </summary>
-		public MarketSummary (Single difference,Single value) {
+		public MarketSummary (Single difference,Single value,String market) {
 			
 			this.difference=difference;
 			this.value=value;
+			this.market=market;
 			
 		}
 		

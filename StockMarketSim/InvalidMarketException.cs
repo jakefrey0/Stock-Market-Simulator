@@ -8,15 +8,15 @@
  */
 using System;
 
-namespace StockMarketSim {
+namespace StockMarketWrapper {
 	
 	/// <summary>
 	/// The exception for handling non-existant/invalid market
 	/// </summary>
-	internal class InvalidMarketException : Exception {
+	public class InvalidMarketException : Exception {
 		
 		/// <summary>
-		/// The constructor for exception for handling non-existant/invalid market
+		/// The constructor for exception for handling non-existant/invalid markets
 		/// </summary>
 		/// <param name="msg">The exception message</param>
 		internal InvalidMarketException (String msg) : base ("InvalidMarketException: "+msg) { }

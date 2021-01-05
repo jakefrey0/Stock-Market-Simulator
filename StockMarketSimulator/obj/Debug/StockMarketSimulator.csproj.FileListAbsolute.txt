@@ -4,3 +4,7 @@ C:\Users\Elite\Documents\SharpDevelop Projects\StockMarketSim\StockMarketSimulat
 C:\Users\Elite\Documents\SharpDevelop Projects\StockMarketSim\StockMarketSimulator\obj\Debug\StockMarketSimulator.csprojResolveAssemblyReference.cache
 C:\Users\Elite\Documents\SharpDevelop Projects\StockMarketSim\StockMarketSimulator\obj\Debug\StockMarketSimulator.exe
 C:\Users\Elite\Documents\SharpDevelop Projects\StockMarketSim\StockMarketSimulator\obj\Debug\StockMarketSimulator.pdb
+C:\Users\Elite\Documents\SharpDevelop Projects\StockMarketSim\StockMarketSimulator\obj\Debug\StockMarketSimulator.MainForm.resources
+C:\Users\Elite\Documents\SharpDevelop Projects\StockMarketSim\StockMarketSimulator\obj\Debug\StockMarketSimulator.csproj.GenerateResource.Cache
+C:\Users\Elite\Documents\SharpDevelop Projects\StockMarketSim\StockMarketSimulator\bin\Debug\StockMarketWrapper.dll
+C:\Users\Elite\Documents\SharpDevelop Projects\StockMarketSim\StockMarketSimulator\bin\Debug\StockMarketWrapper.pdb

@@ -34,17 +34,16 @@ namespace StockMarketWrapper {
 			using (WebBrowser wb=new WebBrowser(){DocumentText="",ScriptErrorsSuppressed=true}) {
 				
 				HtmlDocument doc=wb.Document.OpenNew(true);
-				doc.Write(wc.DownloadString("https://www.google.com/search?&q=INDEXTSI:+"+market));
+				doc.Write(wc.DownloadString("https://www.google.com/search?&q="+market));
 				
-				
-				if (doc.GetElementsByTagName("html")[0].OuterHtml.Contains("No results containing all your search terms were found."))
-					Console.WriteLine("True");
+				if (!(doc.GetElementsByTagName("html")[0].OuterHtml.Contains("https://www.google.com/intl/en_ca/googlefinance/disclaimer")))
+					throw new InvalidMarketException ("Invalid market: \""+market+'"');
 				
 				value=doc.GetElementsByTagName("div").Cast<HtmlElement>().Where(x=>x.GetAttribute("className")=="BNeawe iBp4i AP7Wnd").First().InnerText;
 			
 			}
 			
-			return new MarketSummary(Single.Parse(value.Split(' ')[1]),Single.Parse(value.Split(' ')[0]));
+			return new MarketSummary(Single.Parse(value.Split(' ')[1]),Single.Parse(value.Split(' ')[0]),market);
 			
 		}
 		

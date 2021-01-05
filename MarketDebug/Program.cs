@@ -27,16 +27,39 @@ namespace MarketDebug {
 			
 			Console.Write("Market: ");
 			
-			MarketSummary sum=Market.getMarketSummary(Console.ReadLine());
+			MarketSummary sum=default(MarketSummary);
+			
+			try { sum=Market.getMarketSummary(Console.ReadLine()); }
+			catch (InvalidMarketException) {
+				
+				Program.writeError("Invalid market.");
+				goto subRoutine;
+				
+			}
+			catch (Exception) {
+				
+				Program.writeError("An unexpected exception occurred.");
+				goto subRoutine;
+				
+			}
 			
 			Console.WriteLine(Environment.NewLine+
-			                  "Price:          " +sum.value.ToString()+Environment.NewLine+
-			                  "Difference:     " +sum.difference.ToString()+Environment.NewLine);
+			                  "Price:      " +sum.value.ToString()+Environment.NewLine+
+			                  "Difference: " +((sum.difference>0)?"+"+sum.difference.ToString()+" (↑)":sum.difference.ToString()+" (↓)")+Environment.NewLine);
 			
 			Console.ReadKey();
 			Console.Clear();
 			
 			goto subRoutine;
+			
+		}
+		
+		public static void writeError (String msg) {
+		
+			Console.Clear();
+			Console.ForegroundColor=ConsoleColor.Red;
+			Console.WriteLine(msg);
+			Console.ForegroundColor=ConsoleColor.Gray;
 			
 		}
 		
