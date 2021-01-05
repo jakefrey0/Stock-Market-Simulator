@@ -73,3 +73,5 @@ public static void gotMarketUpdate (MarketWatcher sender,MarketUpdateEventArgs a
 						
 }
 ```
+
+ ![Preview](https://github.com/cashsignsesh/Stock-Market-Simulator/blob/master/stonks.png?raw=true)
