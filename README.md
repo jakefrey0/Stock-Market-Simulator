@@ -62,7 +62,7 @@ mw.addMarket("OSPTX"); //Add a new market
 // (All of these things update in real time as it is still watching)
 			
 Console.ReadKey(); //Wait for user input..
-mw.stopWatching(); //Stop watching and conseqeuently exit the application.
+mw.stopWatching(); //Stop watching (after the next update) and conseqeuently exit the application.
 
 // The aforementioned gotMarketUpdate function, where we get the market summary:
 public static void gotMarketUpdate (MarketWatcher sender,MarketUpdateEventArgs args) {
