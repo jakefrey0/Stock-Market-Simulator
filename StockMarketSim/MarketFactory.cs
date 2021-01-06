@@ -14,7 +14,7 @@ using System.Threading;
 
 namespace StockMarketWrapper {
 	
-	public static class Market {
+	public static class MarketFactory {
 		
 		/// <summary>
 		/// Get the current summary of a market

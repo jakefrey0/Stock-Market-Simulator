@@ -29,7 +29,7 @@ namespace MarketDebug {
 			
 			MarketSummary sum=default(MarketSummary);
 			
-			try { sum=Market.getMarketSummary(Console.ReadLine()); }
+			try { sum=MarketFactory.getMarketSummary(Console.ReadLine()); }
 			catch (InvalidMarketException) {
 				
 				Program.writeError("Invalid market.");

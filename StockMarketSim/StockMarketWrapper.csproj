@@ -41,7 +41,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Market.cs" />
+    <Compile Include="MarketFactory.cs" />
     <Compile Include="MarketSummary.cs" />
     <Compile Include="MarketUpdateEvent.cs" />
     <Compile Include="MarketWatcher.cs" />

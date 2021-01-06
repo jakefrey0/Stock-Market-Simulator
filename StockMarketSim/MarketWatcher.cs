@@ -29,7 +29,7 @@ namespace StockMarketWrapper {
 		/// <summary>
 		/// The market refresh delay
 		/// </summary>
-		private UInt32 updateDelay;
+		private UInt32 marketRefreshDelay;
 		
 		/// <summary>
 		/// This is set to true when Market#stopWatching is called
@@ -42,11 +42,11 @@ namespace StockMarketWrapper {
 		/// Initialize a market watcher that can watch and update multiple markets
 		/// </summary>
 		/// <param name="markets">The markets to watch (i.e OSPTX, DAX)</param>
-		/// <param name="updateDelay">The minimum update delay in milliseconds</param>
-		public MarketWatcher (IEnumerable<String> markets,UInt32 updateDelay) {
+		/// <param name="updateDelay">The minimum market refresh delay in milliseconds</param>
+		public MarketWatcher (IEnumerable<String> markets,UInt32 marketRefreshDelay) {
 			
 			this.markets=new List<String>(markets);
-			this.updateDelay=updateDelay;
+			this.marketRefreshDelay=marketRefreshDelay;
 			
 		}
 		
@@ -79,10 +79,6 @@ namespace StockMarketWrapper {
 			
 			reWatch:
 			
-			start=DateTime.UtcNow;
-			summaries=new List<MarketSummary>(this.markets.Count);
-			marketsToCheck=new List<String>(this.markets);
-			
 			if (this.stopWatchingRequested) {
 				
 				this.stopWatchingRequested=false;
@@ -90,9 +86,13 @@ namespace StockMarketWrapper {
 				
 			}
 			
+			start=DateTime.UtcNow;
+			summaries=new List<MarketSummary>(this.markets.Count);
+			marketsToCheck=new List<String>(this.markets);
+			
 			foreach (String s in marketsToCheck) {
 				
-				try { summaries.Add(Market.getMarketSummary(s)); }
+				try { summaries.Add(MarketFactory.getMarketSummary(s)); }
 				catch (InvalidMarketException) { this.markets.RemoveAll(x=>x==s); }
 				catch (Exception e) { /* ??? */ throw e; }
 				
@@ -103,7 +103,7 @@ namespace StockMarketWrapper {
 			
 			retry:
 			TimeSpan ts=DateTime.UtcNow-start;
-			if (ts.TotalMilliseconds<this.updateDelay) {
+			if (ts.TotalMilliseconds<this.marketRefreshDelay) {
 				
 				Thread.Sleep(1500);
 				goto retry;
@@ -129,7 +129,7 @@ namespace StockMarketWrapper {
 		/// Change the delay, updates in real time
 		/// </summary>
 		/// <param name="newDelay">The new delay in milliseconds</param>
-		public void setDelay (UInt32 newDelay) { this.updateDelay=newDelay; }
+		public void setDelay (UInt32 newDelay) { this.marketRefreshDelay=newDelay; }
 		
 	}
 	
