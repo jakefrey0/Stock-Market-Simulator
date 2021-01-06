@@ -16,7 +16,7 @@ Thread thr=new Thread(()=> { // Create new thread so we can give it the required
 			
 	MarketSummary sum=default(MarketSummary); //Give it default value since it will never be used as is.
 				
-	try { sum=Market.getMarketSummary(Console.ReadLine()); } // Expected input: GOOGL, OSPTX, etc.. 
+	try { sum=MarketFactory.getMarketSummary(Console.ReadLine()); } // Expected input: GOOGL, OSPTX, etc.. 
 	catch (InvalidMarketException) { // If the market is invalid
 					
 		Console.WriteLine("Invalid market."); // Tell the user it's invalid
